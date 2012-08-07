@@ -1,4 +1,4 @@
-module ACH
+module Laundry
 
   class Client < Laundry::MerchantAuthenticatableModel
     

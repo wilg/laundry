@@ -1,16 +1,15 @@
-module ACH
-  module Direct
+module Laundry
 
-    # = Savon::Model
-    #
-    # Model for SOAP service oriented applications.
-    module SOAPModel
+  # = Savon::Model
+  #
+  # Model for SOAP service oriented applications.
+  module SOAPModel
 
-      def self.extended(base)
-        base.setup
-      end
+    def self.extended(base)
+      base.setup
+    end
 
-      def setup
+    def setup
         class_action_module
         instance_action_module
       end
@@ -110,5 +109,5 @@ module ACH
       end
 
     end
-  end
+
 end
