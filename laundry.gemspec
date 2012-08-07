@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-require File.expand_path('../lib/ach-direct/version', __FILE__)
+require File.expand_path('../lib/laundry/version', __FILE__)
 
 Gem::Specification.new do |gem|
   gem.authors       = ["Wil Gieseler"]
@@ -11,9 +11,9 @@ Gem::Specification.new do |gem|
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
-  gem.name          = "ach-direct"
+  gem.name          = "laundry"
   gem.require_paths = ["lib"]
-  gem.version       = ACH::Direct::VERSION
+  gem.version       = Laundry::VERSION
   
   gem.add_dependency 'savon'
   
