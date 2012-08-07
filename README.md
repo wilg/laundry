@@ -1,6 +1,8 @@
-# Laundry
+#Steam Condenser [![Build Status](https://secure.travis-ci.org/supapuerco/laundry.png)](http://travis-ci.org/supapuerco/laundry) [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/supapuerco/laundry)
 
 TODO: Write a gem description
+
+[View the Rdoc](http://rdoc.info/github/supapuerco/laundry/master/frames)
 
 ## Installation
 
