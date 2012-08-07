@@ -18,8 +18,8 @@ end
 # Lib
 require "laundry/lib/soap_model"
 
-# Models
-require "laundry/models/merchant_authenticatable_model"
-require "laundry/models/account"
-require "laundry/models/client"
-require "laundry/models/merchant"
+# Payments Gateway
+require "laundry/payments_gateway/merchant_authenticatable_model"
+require "laundry/payments_gateway/account"
+require "laundry/payments_gateway/client"
+require "laundry/payments_gateway/merchant"
