@@ -21,7 +21,7 @@ end
 require "ach-direct/lib/soap_model"
 
 # Models
-require "ach-direct/models/gateway_model"
+require "ach-direct/models/merchant_authenticatable_model"
 require "ach-direct/models/account"
 require "ach-direct/models/client"
 require "ach-direct/models/merchant"

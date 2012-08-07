@@ -1,7 +1,7 @@
 module ACH
   module Direct
 
-    class Account
+    class Account < ACH::Direct::MerchantAuthenticatableModel
       
       
     end

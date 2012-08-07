@@ -31,7 +31,7 @@ module ACH
       def define_class_action(action)
         class_action_module.module_eval %{
           def #{action.to_s.snakecase}(body = nil, &block)
-            client.request :wsdl, #{action.inspect}, :body => merged_default_body(body), &block
+            client.request :wsdl, #{action.inspect}, :body => body, &block
           end
         }
       end
@@ -40,7 +40,7 @@ module ACH
       def define_instance_action(action)
         instance_action_module.module_eval %{
           def #{action.to_s.snakecase}(body = nil, &block)
-            self.class.#{action.to_s.snakecase} body, &block
+            self.class.#{action.to_s.snakecase} merged_default_body(body), &block
           end
         }
       end
@@ -84,16 +84,6 @@ module ACH
             client.wsse.credentials(*args)
           end
         
-          def default_body(hash)
-            @default_body = hash
-          end
-        
-          private
-        
-          def merged_default_body(body = {})
-            (@default_body || {}).merge body
-          end
-
         end.tap { |mod| extend(mod) }
       end
 
@@ -104,6 +94,16 @@ module ACH
           # Returns the <tt>Savon::Client</tt> from the class instance.
           def client(&block)
             self.class.client(&block)
+          end
+          
+          def default_body(hash)
+            @default_body = hash
+          end
+        
+          private
+        
+          def merged_default_body(body = {})
+            (@default_body || {}).merge (body || {})
           end
 
         end.tap { |mod| include(mod) }
