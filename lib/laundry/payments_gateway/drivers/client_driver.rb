@@ -1,7 +1,7 @@
 module Laundry
   module PaymentsGateway
 
-    class Client < MerchantAuthenticatableModel
+    class ClientDriver < MerchantAuthenticatableDriver
     
      # Setup WSDL
       if Laundry.sandboxed?
@@ -12,8 +12,8 @@ module Laundry
     
       actions "createClient", "getClient"
     
-      def get_client(id)
-        super({'MerchantID' => self.merchant.id, 'ClientID' => id}) do
+      def find(id)
+        get_client({'MerchantID' => self.merchant.id, 'ClientID' => id}) do
           http.headers["SOAPAction"] = 'https://ws.paymentsgateway.net/v1/IClientService/getClient'
         end 
       end

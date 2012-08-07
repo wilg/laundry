@@ -1,7 +1,7 @@
 module Laundry
   module PaymentsGateway
 
-    class MerchantAuthenticatableModel
+    class MerchantAuthenticatableDriver
       extend Laundry::SOAPModel
     
       attr_accessor :merchant

@@ -19,7 +19,4 @@ end
 require "laundry/lib/soap_model"
 
 # Payments Gateway
-require "laundry/payments_gateway/merchant_authenticatable_model"
-require "laundry/payments_gateway/account"
-require "laundry/payments_gateway/client"
-require "laundry/payments_gateway/merchant"
+require "laundry/payments_gateway/payments_gateway"

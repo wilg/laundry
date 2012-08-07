@@ -1,7 +1,7 @@
 module Laundry
   module PaymentsGateway
 
-    class Account < MerchantAuthenticatableModel
+    class AccountDriver < MerchantAuthenticatableDriver
     
     
     end

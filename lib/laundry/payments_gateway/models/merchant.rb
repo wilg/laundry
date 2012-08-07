@@ -23,8 +23,9 @@ module Laundry
       end
           
       def client_driver
-        @client_driver ||= Client.new(self)
+        @client_driver ||= ClientDriver.new(self)
       end
+      alias_method :clients, :client_driver
     
       def login_credentials
         {'ticket' => MerchantAuthentication.new(@api_login_id, @api_password).login_hash}
