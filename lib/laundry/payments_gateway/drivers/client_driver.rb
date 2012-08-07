@@ -10,12 +10,13 @@ module Laundry
         document "https://ws.paymentsgateway.net/Service/v1/Client.wsdl"
       end
     
-      actions "createClient", "getClient"
+      actions "createClient", "getClient", "getPaymentMethod", "createPaymentMethod"
     
       def find(id)
-        get_client({'ClientID' => id}) do
+        r = get_client({'ClientID' => id}) do
           http.headers["SOAPAction"] = 'https://ws.paymentsgateway.net/v1/IClientService/getClient'
-        end 
+        end
+        Client.new(r, self.merchant)
       end
       
       # Creates a client and returns the newly created client id.
@@ -25,6 +26,8 @@ module Laundry
         end
         r[:create_client_response][:create_client_result]
       end
+      
+      private
       
       def self.default_fields
         ['MerchantID',

@@ -13,7 +13,7 @@ module Laundry
         # Log in via the merchant's login credentials.
         default_body self.merchant.login_credentials.merge("MerchantID" => self.merchant.id)
       end
-    
+          
     end
     
   end

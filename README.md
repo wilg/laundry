@@ -2,6 +2,9 @@
 
 TODO: Write a gem description
 
+    merchant = Laundry::PaymentsGateway::Merchant.new(id: '12345', api_login_id: 'abcd', api_password: 'secret')
+    merchant.clients.find(10).accounts.create!
+
 [View the Rdoc](http://rdoc.info/github/supapuerco/laundry/master/frames)
 
 ## Installation
