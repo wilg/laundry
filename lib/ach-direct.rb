@@ -1,20 +1,27 @@
 require "ach-direct/version"
-
-# Models
-require "ach-direct/models/account"
-require "ach-direct/models/client"
-require "ach-direct/models/merhant"
+require 'savon'
 
 module ACH
   module Direct
+    
+    @@sandboxed = true
 
-    def sandboxed?
-      @@sandboxed || true
+    def self.sandboxed?
+      @@sandboxed
     end
     
-    def sandboxed=(yn)
+    def self.sandboxed=(yn)
       @@sandboxed = yn
     end
 
   end
 end
+
+# Lib
+require "ach-direct/lib/soap_model"
+
+# Models
+require "ach-direct/models/gateway_model"
+require "ach-direct/models/account"
+require "ach-direct/models/client"
+require "ach-direct/models/merchant"
