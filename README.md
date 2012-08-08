@@ -1,9 +1,8 @@
 #Laundry [![Build Status](https://secure.travis-ci.org/supapuerco/laundry.png)](http://travis-ci.org/supapuerco/laundry) [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/supapuerco/laundry)
 
-TODO: Write a gem description
+Have you ever wanted to use [ACH Direct](http://www.achdirect.com)'s [Payments Gateway](http://paymentsgateway.com) SOAP API? Neither did anyone. However, with this little gem you should be able to interact with it without going too terribly nuts.
 
-    merchant = Laundry::PaymentsGateway::Merchant.new(id: '12345', api_login_id: 'abcd', api_password: 'secret')
-    merchant.clients.find(10).accounts.create!
+The basic idea is to have a somewhat ActiveRecord-y syntax to making payments, updating client information, etc.
 
 [View the Rdoc](http://rdoc.info/github/supapuerco/laundry/master/frames)
 
@@ -23,7 +22,44 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+First, set up your merchant **account details**, possibly in a Rails initializer. (You're not limited to this singleton thing, but it's pretty useful if you just have one account.)
+
+```ruby
+Laundry::PaymentsGateway::Merchant.default_merchant({
+  id: '123456', 
+  api_login_id: 'abc123', 
+  api_password: 'secretsauce', 
+  transaction_password: 'moneymoneymoney'
+})
+```
+
+In development? You should probably **sandbox** this baby:
+
+```ruby
+Laundry.sandboxed = !Rails.env.production?
+```
+
+Then you can **find a client**:
+
+```ruby
+client = Laundry::PaymentsGateway::Merchant.default_merchant.clients.find(10)
+```
+
+Create a **bank account**:
+
+```ruby
+client.accounts.create!({
+  acct_holder_name: user.name,
+  ec_account_number: '12345678912345689', 
+  ec_account_trn: '123457890',
+  ec_account_type: "CHECKING"
+})
+```
+
+**Send some money**:
+```ruby
+account.debit_cents 1250
+```
 
 ## Contributing
 
@@ -31,4 +67,4 @@ TODO: Write usage instructions here
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+5. Create a new Pull Request
