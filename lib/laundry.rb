@@ -1,6 +1,13 @@
 require "laundry/version"
 require 'savon'
 
+# Don't log Laundry xmls to STDOUT.
+Savon.configure do |config|
+  config.log = false         
+  config.log_level = :error  
+  HTTPI.log = false          
+end
+
 module Laundry
   
   @@sandboxed = true
