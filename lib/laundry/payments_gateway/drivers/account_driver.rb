@@ -14,16 +14,32 @@ module Laundry
       end
       
       def find(payment_method_id)
-        client_driver.get_payment_method({'ClientID' => self.client.id, 'PaymentMethodID' => payment_method_id}) do
+        r = client_driver.get_payment_method({'ClientID' => self.client.id, 'PaymentMethodID' => payment_method_id}) do
           http.headers["SOAPAction"] = 'https://ws.paymentsgateway.net/v1/IClientService/getPaymentMethod'
         end
+        Account.new(r, self.merchant)
       end
       
+      # Returns the payment method id
       def create!(options = {})
-        r = client_driver.create_payment_method({'client' => {'MerchantID' => self.merchant.id, 'PaymentMethodID' => 0}.merge(options)} ) do
+        options = {merchant_id: self.merchant.id, client_id: self.client.id, payment_method_id: 0}.merge(options)
+        options = AccountDriver.uglify_hash(options)
+        r = client_driver.create_payment_method({'payment' => options}) do
           http.headers["SOAPAction"] = 'https://ws.paymentsgateway.net/v1/IClientService/createPaymentMethod'
         end
-        r
+        r[:create_payment_method_response][:create_payment_method_result]
+      end
+            
+      def self.prettifiable_fields
+        ['MerchantID',
+         'ClientID',
+         'PaymentMethodID',
+         'AcctHolderName',
+         'EcAccountNumber',
+         'EcAccountTRN',
+         'EcAccountType',
+         'Note',
+         'IsDefault']
       end
     
     end

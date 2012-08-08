@@ -10,6 +10,11 @@ module Laundry
       else
         document "https://ws.paymentsgateway.net/Service/v1/Merchant.wsdl"
       end
+      
+      def self.default_merchant(options = nil)
+        @@default_merchant = Merchant.new(options) if options
+        @@default_merchant
+      end
     
       attr_accessor :id, :api_login_id, :api_password, :transaction_password
     
@@ -26,6 +31,10 @@ module Laundry
         @client_driver ||= ClientDriver.new(self)
       end
       alias_method :clients, :client_driver
+    
+      def socket_driver
+        @socket_driver ||= SocketDriver.new(self)
+      end
     
       def login_credentials
         # Time diff from 1/1/0001 00:00:00 to 1/1/1970 00:00:00

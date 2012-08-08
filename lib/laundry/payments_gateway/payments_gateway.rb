@@ -1,7 +1,10 @@
 require "laundry/payments_gateway/models/response_model"
 require "laundry/payments_gateway/models/client"
+require "laundry/payments_gateway/models/account"
 require "laundry/payments_gateway/models/merchant"
+require "laundry/payments_gateway/models/transaction_response"
 
 require "laundry/payments_gateway/drivers/merchant_authenticatable_driver"
 require "laundry/payments_gateway/drivers/account_driver"
 require "laundry/payments_gateway/drivers/client_driver"
+require "laundry/payments_gateway/drivers/socket_driver"
