@@ -12,7 +12,7 @@ module Laundry
       
       # Override please.
       def record
-        response || {}
+        response.try(:to_hash) || {}
       end
       
       def to_hash

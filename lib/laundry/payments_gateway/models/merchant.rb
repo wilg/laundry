@@ -32,6 +32,11 @@ module Laundry
       end
       alias_method :clients, :client_driver
     
+      def transaction_driver
+        @transaction_driver ||= TransactionDriver.new(self)
+      end
+      alias_method :transactions, :transaction_driver
+    
       def socket_driver
         @socket_driver ||= SocketDriver.new(self)
       end

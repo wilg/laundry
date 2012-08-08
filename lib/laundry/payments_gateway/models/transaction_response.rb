@@ -17,6 +17,10 @@ module Laundry
       def success?
         pg_response_type == 'A'
       end
+      
+      def full_transaction
+        self.merchant.transactions.find pg_payment_method_id, pg_trace_number
+      end
             
       private
         
