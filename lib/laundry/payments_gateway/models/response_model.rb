@@ -19,8 +19,12 @@ module Laundry
         record
       end
       
+      def blank?
+        record == {} || record.nil? || !record
+      end
+      
       def method_missing(id, *args)
-        return record[id.to_sym] if record.try(:has_key?, id.to_sym)
+        return record[id.to_sym] if record.is_a?(Hash) && record.has_key?(id.to_sym)
         super
       end
         
