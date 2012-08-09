@@ -94,15 +94,12 @@ module Laundry
           def client(&block)
             self.class.client(&block)
           end
-          
-          def default_body(hash)
-            @default_body = hash
-          end
-        
+                  
           private
         
           def merged_default_body(body = {})
-            (@default_body || {}).merge (body || {})
+            default = self.respond_to?(:default_body) ? self.default_body : nil
+            (default || {}).merge (body || {})
           end
 
         end.tap { |mod| include(mod) }
