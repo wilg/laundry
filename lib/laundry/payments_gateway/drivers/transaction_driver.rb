@@ -4,10 +4,12 @@ module Laundry
     class TransactionDriver < MerchantAuthenticatableDriver
     
       # Setup WSDL
-      if Laundry.sandboxed?
-        document 'https://sandbox.paymentsgateway.net/WS/Transaction.wsdl'
-      else
-        document 'https://ws.paymentsgateway.net/Service/v1/Transaction.wsdl'
+      def self.wsdl
+        if Laundry.sandboxed?
+          'https://sandbox.paymentsgateway.net/WS/Transaction.wsdl'
+        else
+          'https://ws.paymentsgateway.net/Service/v1/Transaction.wsdl'
+        end
       end
     
       actions "getTransaction"

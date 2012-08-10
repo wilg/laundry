@@ -3,11 +3,13 @@ module Laundry
 
     class ClientDriver < MerchantAuthenticatableDriver
     
-     # Setup WSDL
-      if Laundry.sandboxed?
-        document "https://sandbox.paymentsgateway.net/WS/Client.wsdl"
-      else
-        document "https://ws.paymentsgateway.net/Service/v1/Client.wsdl"
+      # Setup WSDL
+      def self.wsdl
+        if Laundry.sandboxed?
+          "https://sandbox.paymentsgateway.net/WS/Client.wsdl"
+        else
+          "https://ws.paymentsgateway.net/Service/v1/Client.wsdl"
+        end
       end
     
       actions "createClient", "getClient", "getPaymentMethod", "createPaymentMethod"

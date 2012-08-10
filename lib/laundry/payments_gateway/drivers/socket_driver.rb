@@ -4,10 +4,12 @@ module Laundry
     class SocketDriver < MerchantAuthenticatableDriver
     
       # Setup WSDL
-      if Laundry.sandboxed?
-        document "https://ws.paymentsgateway.net/pgtest/paymentsgateway.asmx?WSDL"
-      else
-        document "https://ws.paymentsgateway.net/pg/paymentsgateway.asmx?WSDL"
+      def self.wsdl
+        if Laundry.sandboxed?
+          "https://ws.paymentsgateway.net/pgtest/paymentsgateway.asmx?WSDL"
+        else
+          "https://ws.paymentsgateway.net/pg/paymentsgateway.asmx?WSDL"
+        end
       end
     
       actions "ExecuteSocketQuery"

@@ -9,6 +9,11 @@ module Laundry
       def initialize(merchant)
         # Save the merchant.
         self.merchant = merchant
+        setup_client!
+      end
+      
+      def setup_client!
+        self.class.client.wsdl.document = self.class.wsdl if self.class.respond_to?(:wsdl)
       end
       
       def default_body
