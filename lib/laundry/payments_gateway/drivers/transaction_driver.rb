@@ -16,7 +16,7 @@ module Laundry
         r = get_transaction({'ClientID' => client_id, 'TransactionID' => transaction_id}) do
           http.headers["SOAPAction"] = "https://ws.paymentsgateway.net/v1/ITransactionService/getTransaction"
         end
-        Transaction.new(r, self.merchant)
+        Transaction.from_response(r, self.merchant)
       end
 
     end

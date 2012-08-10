@@ -10,7 +10,13 @@ The basic idea is to have a somewhat ActiveRecord-y syntax to making payments, u
 
 Add this line to your application's Gemfile:
 
-    gem 'laundry'
+```ruby
+gem 'laundry'
+```
+
+For the time being, there is a [bug in Savon's XML parser]() that requires
+
+    gem 'nori', git: 'git@github.com:supapuerco/nori.git' # Fixes some YAML serialization issues.
 
 And then execute:
 

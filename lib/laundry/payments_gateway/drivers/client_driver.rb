@@ -16,7 +16,7 @@ module Laundry
         r = get_client({'ClientID' => id}) do
           http.headers["SOAPAction"] = 'https://ws.paymentsgateway.net/v1/IClientService/getClient'
         end
-        Client.new(r, self.merchant)
+        Client.from_response(r, self.merchant)
       end
       
       # Creates a client and returns the newly created client id.

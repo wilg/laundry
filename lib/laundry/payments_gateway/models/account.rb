@@ -2,11 +2,11 @@ module Laundry
   module PaymentsGateway
 
     class Account < ResponseModel
-      
-      def record
-        response[:get_payment_method_response][:get_payment_method_result][:payment_method]
+            
+      def initialize_with_response(response)
+        self.record = response[:get_payment_method_response][:get_payment_method_result][:payment_method]
       end
-      
+
       # EFT TRANSACTION_CODES
       EFT_SALE = 20
       EFT_AUTH_ONLY = 21
@@ -33,6 +33,7 @@ module Laundry
       end
       
       def perform_transaction(dollars, type, options = {})
+        require_merchant!
         options = {
          'pg_merchant_id' => self.merchant.id, 
          'pg_password' => self.merchant.transaction_password,       
@@ -42,7 +43,7 @@ module Laundry
          'pg_transaction_type' => type
          }.merge(options)
         r = self.merchant.socket_driver.exec(options)
-        TransactionResponse.new(r, self.merchant)
+        TransactionResponse.from_response(r, self.merchant)
       end
             
       def id

@@ -17,7 +17,7 @@ module Laundry
         r = client_driver.get_payment_method({'ClientID' => self.client.id, 'PaymentMethodID' => payment_method_id}) do
           http.headers["SOAPAction"] = 'https://ws.paymentsgateway.net/v1/IClientService/getPaymentMethod'
         end
-        Account.new(r, self.merchant)
+        Account.from_response(r, self.merchant)
       end
       
       # Returns the payment method id
