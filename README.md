@@ -2,7 +2,7 @@
 
 Have you ever wanted to use [ACH Direct](http://www.achdirect.com)'s [Payments Gateway](http://paymentsgateway.com) SOAP API? Neither did anyone. However, with this little gem you should be able to interact with it without going too terribly nuts.
 
-The basic idea is to have a somewhat ActiveRecord-y syntax to making payments, updating client information, etc.
+The goal is to have a lightweight ActiveRecord-ish syntax to making payments, updating client information, etc.
 
 [View the Rdoc](http://rdoc.info/github/supapuerco/laundry/master/frames)
 
@@ -30,10 +30,14 @@ Or install it yourself as:
 
 ## Usage
 
-First, set up your merchant **account details**, possibly in a Rails initializer. (You're not limited to this singleton thing, but it's pretty useful if you just have one account.)
+### Merchant Setup
+
+As a user of Payments Gateway's API, you probably have a *merchant account*, which serves as the context for all your transactions. 
+
+The first thing will be to **enter your api key details**:
 
 ```ruby
-Laundry::PaymentsGateway::Merchant.default_merchant({
+merchant = Laundry::PaymentsGateway::Merchant.new({
   id: '123456', 
   api_login_id: 'abc123', 
   api_password: 'secretsauce', 
@@ -41,22 +45,34 @@ Laundry::PaymentsGateway::Merchant.default_merchant({
 })
 ```
 
+Since you probably just have the one account you can store that by using `default_merchant` instead of `new`:
+
+```ruby
+Laundry::PaymentsGateway::Merchant.default_merchant({...})
+```
+
+Then, you can access your merchant without having to keep track of the account details by calling `Laundry::PaymentsGateway::Merchant.default_merchant` again.
+
+### Sandbox
+
 In development? You should probably **sandbox** this baby:
 
 ```ruby
 Laundry.sandboxed = !Rails.env.production?
 ```
 
+### The Good Stuff
+
 Then you can **find a client**:
 
 ```ruby
-client = Laundry::PaymentsGateway::Merchant.default_merchant.clients.find(10)
+client = merchant.clients.find(10)
 ```
 
 Create a **bank account**:
 
 ```ruby
-client.accounts.create!({
+account_id = client.accounts.create!({
   acct_holder_name: user.name,
   ec_account_number: '12345678912345689', 
   ec_account_trn: '123457890',
@@ -64,9 +80,21 @@ client.accounts.create!({
 })
 ```
 
-**Send some money**:
+Or find an existing one:
+
 ```ruby
-account.debit_cents 1250
+account = client.accounts.find(1234)
+```
+
+And, of course, **Send some money**:
+```ruby
+account.credit_cents 1250
+```
+
+Or take it:
+
+```ruby
+account.debit_cents 20000
 ```
 
 ## Contributing
