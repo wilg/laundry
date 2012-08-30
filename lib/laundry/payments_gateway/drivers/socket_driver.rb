@@ -2,7 +2,7 @@ module Laundry
   module PaymentsGateway
 
     class SocketDriver < MerchantAuthenticatableDriver
-    
+
       # Setup WSDL
       def self.wsdl
         if Laundry.sandboxed?
@@ -11,15 +11,15 @@ module Laundry
           "https://ws.paymentsgateway.net/pg/paymentsgateway.asmx?WSDL"
         end
       end
-    
+
       actions "ExecuteSocketQuery"
-      
+
       def exec(options = {})
         execute_socket_query(options) do
           http.headers["SOAPAction"] = "http://paymentsgateway.achdirect.com/ExecuteSocketQuery"
         end
       end
-    
+
     end
 
   end
