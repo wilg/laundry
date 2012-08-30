@@ -19,5 +19,6 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'savon'
 
   gem.add_development_dependency 'rspec'
+  gem.add_development_dependency 'factory_girl'
 
 end
