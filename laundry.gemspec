@@ -2,7 +2,7 @@
 require File.expand_path('../lib/laundry/version', __FILE__)
 
 Gem::Specification.new do |gem|
-  
+
   gem.authors       = ["Wil Gieseler"]
   gem.email         = ["supapuerco@gmail.com"]
   gem.description   = "A soapy interface to ACH Direct's PaymentsGateway.com service."
@@ -15,7 +15,9 @@ Gem::Specification.new do |gem|
   gem.name          = "laundry"
   gem.require_paths = ["lib"]
   gem.version       = Laundry::VERSION
-  
+
   gem.add_dependency 'savon'
-  
+
+  gem.add_development_dependency 'rspec'
+
 end

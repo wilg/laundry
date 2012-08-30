@@ -1,12 +1,12 @@
 #!/usr/bin/env rake
 require "bundler/gem_tasks"
+require 'rubygems'
+require 'rake'
+require 'rspec/core/rake_task'
 
-desc "Open an irb session preloaded with this library"
-task :console do
-  sh "bundle exec irb -rubygems -I lib -r laundry.rb"
+desc "Run RSpec"
+RSpec::Core::RakeTask.new do |t|
+  t.verbose = false
 end
 
-task :default => [:travis]
-task :travis do
-  
-end
+task :default => :spec
