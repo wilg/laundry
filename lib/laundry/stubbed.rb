@@ -35,3 +35,5 @@ Laundry::PaymentsGateway::AccountDriver.any_instance.stub(:create!).and_return(b
 
 # Stub performing transactions.
 Laundry::PaymentsGateway::Account.any_instance.stub(:perform_transaction).and_return(build(:transaction_response))
+
+Laundry.stub(:stubbed?).and_return true

@@ -24,6 +24,10 @@ module Laundry
     require "laundry/stubbed"
   end
 
+  def self.stubbed?
+  	false
+  end
+
 end
 
 # Lib
