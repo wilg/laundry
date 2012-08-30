@@ -10,6 +10,10 @@ describe Laundry::PaymentsGateway::Merchant do
 				merchant.clients.find(10).class.should == Laundry::PaymentsGateway::Client
 			end
 
+			it "client should have an id" do
+				merchant.clients.find(10).id.should == "1"
+			end
+
 	end
 
 end
