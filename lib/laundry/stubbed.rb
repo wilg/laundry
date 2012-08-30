@@ -16,24 +16,28 @@ class Module
 	end
 end
 
-# Just stub away all the SOAP requests and such.
-classes = [Laundry::PaymentsGateway::MerchantAuthenticatableDriver, Laundry::PaymentsGateway::Merchant]
-classes.map{|c| [c.subclasses, c] }.flatten.uniq.each do |klass|
-	klass.stub(:client_request).and_return true
-	klass.stub(:client).and_return true
-	klass.any_instance.stub(:setup_client!).and_return true
+def stub_all
+  # Just stub away all the SOAP requests and such.
+  classes = [Laundry::PaymentsGateway::MerchantAuthenticatableDriver, Laundry::PaymentsGateway::Merchant]
+  classes.map{|c| [c.subclasses, c] }.flatten.uniq.each do |klass|
+    klass.stub(:client_request).and_return true
+    klass.stub(:client).and_return true
+    klass.any_instance.stub(:setup_client!).and_return true
+  end
+
+  # Stub client driver
+  Laundry::PaymentsGateway::ClientDriver.any_instance.stub(:find).and_return(build(:client))
+  Laundry::PaymentsGateway::ClientDriver.any_instance.stub(:create!).and_return(build(:client).id)
+
+
+  # Stub account driver
+  Laundry::PaymentsGateway::AccountDriver.any_instance.stub(:find).and_return(build(:account))
+  Laundry::PaymentsGateway::AccountDriver.any_instance.stub(:create!).and_return(build(:account).id)
+
+  # Stub performing transactions.
+  Laundry::PaymentsGateway::Account.any_instance.stub(:perform_transaction).and_return(build(:transaction_response))
+
+  Laundry.stub(:stubbed?).and_return true
 end
 
-# Stub client driver
-Laundry::PaymentsGateway::ClientDriver.any_instance.stub(:find).and_return(build(:client))
-Laundry::PaymentsGateway::ClientDriver.any_instance.stub(:create!).and_return(build(:client).id)
-
-
-# Stub account driver
-Laundry::PaymentsGateway::AccountDriver.any_instance.stub(:find).and_return(build(:account))
-Laundry::PaymentsGateway::AccountDriver.any_instance.stub(:create!).and_return(build(:account).id)
-
-# Stub performing transactions.
-Laundry::PaymentsGateway::Account.any_instance.stub(:perform_transaction).and_return(build(:transaction_response))
-
-Laundry.stub(:stubbed?).and_return true
+stub_all

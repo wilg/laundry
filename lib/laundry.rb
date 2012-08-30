@@ -21,7 +21,7 @@ module Laundry
   end
 
   def self.stub!
-    require "laundry/stubbed"
+    stub_all unless require "laundry/stubbed"
   end
 
   def self.stubbed?
