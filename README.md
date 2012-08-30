@@ -32,15 +32,15 @@ Or install it yourself as:
 
 ### Merchant Setup
 
-As a user of Payments Gateway's API, you probably have a *merchant account*, which serves as the context for all your transactions. 
+As a user of Payments Gateway's API, you probably have a *merchant account*, which serves as the context for all your transactions.
 
 The first thing will be to **enter your api key details**:
 
 ```ruby
 merchant = Laundry::PaymentsGateway::Merchant.new({
-  id: '123456', 
-  api_login_id: 'abc123', 
-  api_password: 'secretsauce', 
+  id: '123456',
+  api_login_id: 'abc123',
+  api_password: 'secretsauce',
   transaction_password: 'moneymoneymoney'
 })
 ```
@@ -74,7 +74,7 @@ Create a **bank account**:
 ```ruby
 account_id = client.accounts.create!({
   acct_holder_name: user.name,
-  ec_account_number: '12345678912345689', 
+  ec_account_number: '12345678912345689',
   ec_account_trn: '123457890',
   ec_account_type: "CHECKING"
 })
