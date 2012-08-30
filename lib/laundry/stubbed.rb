@@ -1,5 +1,8 @@
 require "rspec/mocks/standalone"
 require 'factory_girl'
+factories_dir = File.expand_path File.join(__FILE__, "..", "..", "..", "spec", "factories")
+puts factories_dir
+FactoryGirl.definition_file_paths = [factories_dir]
 FactoryGirl.find_definitions
 include FactoryGirl::Syntax::Methods
 
@@ -23,3 +26,12 @@ end
 
 # Stub client driver
 Laundry::PaymentsGateway::ClientDriver.any_instance.stub(:find).and_return(build(:client))
+Laundry::PaymentsGateway::ClientDriver.any_instance.stub(:create!).and_return(build(:client).id)
+
+
+# Stub account driver
+Laundry::PaymentsGateway::AccountDriver.any_instance.stub(:find).and_return(build(:account))
+Laundry::PaymentsGateway::AccountDriver.any_instance.stub(:create!).and_return(build(:account).id)
+
+# Stub performing transactions.
+Laundry::PaymentsGateway::Account.any_instance.stub(:perform_transaction).and_return(build(:transaction_response))
