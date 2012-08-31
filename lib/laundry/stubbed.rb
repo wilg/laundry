@@ -40,4 +40,5 @@ def stub_all
   Laundry.stub(:stubbed?).and_return true
 end
 
+# Run this code once on the first require to ensure all methods are stubbed
 stub_all
