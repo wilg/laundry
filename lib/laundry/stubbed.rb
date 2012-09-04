@@ -1,10 +1,13 @@
 require "rspec/mocks/standalone"
-# require 'factory_girl'
-# factories_dir = File.expand_path File.join(__FILE__, "..", "..", "..", "spec", "factories")
-# puts factories_dir
-# FactoryGirl.definition_file_paths = [factories_dir]
-# FactoryGirl.find_definitions
-# include FactoryGirl::Syntax::Methods
+require 'factory_girl'
+begin
+	factories_dir = File.expand_path File.join(__FILE__, "..", "..", "..", "spec", "factories")
+	FactoryGirl.definition_file_paths = [factories_dir]
+	FactoryGirl.find_definitions
+rescue FactoryGirl::DuplicateDefinitionError
+	puts "Factories already loaded."
+end
+include FactoryGirl::Syntax::Methods
 
 class Module
 	def subclasses
