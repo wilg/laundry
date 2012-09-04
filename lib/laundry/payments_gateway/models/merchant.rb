@@ -11,6 +11,7 @@ module Laundry
         document "https://ws.paymentsgateway.net/Service/v1/Merchant.wsdl"
       end
 
+      # Deprecated. Avoid this.
       def self.default_merchant(options = nil)
         @@default_merchant = Merchant.new(options) if options
         @@default_merchant
