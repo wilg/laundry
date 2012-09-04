@@ -14,4 +14,5 @@ RSpec.configure do |config|
 end
 
 require_relative "../lib/laundry"
+FactoryGirl.find_definitions
 Laundry.stub!

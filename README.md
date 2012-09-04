@@ -45,14 +45,6 @@ merchant = Laundry::PaymentsGateway::Merchant.new({
 })
 ```
 
-Since you probably just have the one account you can store that by using `default_merchant` instead of `new`:
-
-```ruby
-Laundry::PaymentsGateway::Merchant.default_merchant({...})
-```
-
-Then, you can access your merchant without having to keep track of the account details by calling `Laundry::PaymentsGateway::Merchant.default_merchant` again.
-
 ### Sandbox
 
 In development? You should probably **sandbox** this baby:
