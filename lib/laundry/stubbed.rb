@@ -29,16 +29,16 @@ def stub_all
   end
 
   # Stub client driver
-  Laundry::PaymentsGateway::ClientDriver.any_instance.stub(:find).and_return({})
-  Laundry::PaymentsGateway::ClientDriver.any_instance.stub(:create!).and_return({})
+  Laundry::PaymentsGateway::ClientDriver.any_instance.stub(:find).and_return(build(:client))
+  Laundry::PaymentsGateway::ClientDriver.any_instance.stub(:create!).and_return(build(:client).id)
 
 
   # Stub account driver
-  Laundry::PaymentsGateway::AccountDriver.any_instance.stub(:find).and_return({})
-  Laundry::PaymentsGateway::AccountDriver.any_instance.stub(:create!).and_return({})
+  Laundry::PaymentsGateway::AccountDriver.any_instance.stub(:find).and_return(build(:account))
+  Laundry::PaymentsGateway::AccountDriver.any_instance.stub(:create!).and_return(build(:account).id)
 
   # Stub performing transactions.
-  Laundry::PaymentsGateway::Account.any_instance.stub(:perform_transaction).and_return({})
+  Laundry::PaymentsGateway::Account.any_instance.stub(:perform_transaction).and_return(build(:transaction_response))
 
   Laundry.stub(:stubbed?).and_return true
 end
