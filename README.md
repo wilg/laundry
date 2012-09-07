@@ -1,4 +1,4 @@
-#Laundry [![Build Status](https://secure.travis-ci.org/supapuerco/laundry.png?branch=master)](http://travis-ci.org/supapuerco/laundry) [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/supapuerco/laundry)
+#Laundry [![Build Status](https://secure.travis-ci.org/supapuerco/laundry.png?branch=master)](http://travis-ci.org/supapuerco/laundry) [![Dependency Status](https://gemnasium.com/wilg/laundry.png)](https://gemnasium.com/wilg/laundry) [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/supapuerco/laundry)
 
 Have you ever wanted to use [ACH Direct](http://www.achdirect.com)'s [Payments Gateway](http://paymentsgateway.com) SOAP API? Neither did anyone. However, with this little gem you should be able to interact with it without going too terribly nuts.
 
