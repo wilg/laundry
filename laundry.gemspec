@@ -7,7 +7,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["supapuerco@gmail.com"]
   gem.description   = "A soapy interface to ACH Direct's PaymentsGateway.com service."
   gem.summary       = "A soapy interface to ACH Direct's PaymentsGateway.com service."
-  gem.homepage      = "https://github.com/supapuerco/laundry"
+  gem.homepage      = "https://github.com/wilg/laundry"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
