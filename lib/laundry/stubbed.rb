@@ -27,6 +27,9 @@ def stub_all
   Laundry::PaymentsGateway::AccountDriver.any_instance.stub(:find).and_return(Laundry.mock(:account))
   Laundry::PaymentsGateway::AccountDriver.any_instance.stub(:create!).and_return(Laundry.mock(:account).id)
 
+  # Stub transaction driver
+  Laundry::PaymentsGateway::TransactionDriver.any_instance.stub(:find).and_return(Laundry.mock(:transaction))
+
   # Stub performing transactions.
   Laundry::PaymentsGateway::Account.any_instance.stub(:perform_transaction).and_return(Laundry.mock(:transaction_response))
 
