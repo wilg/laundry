@@ -28,6 +28,12 @@ module Laundry
   	false
   end
 
+  def self.mock(type)
+		o = YAML::load_file(File.expand_path(File.join(__FILE__, "..", "..", "spec", "fixtures", "#{type.to_s}.yml")))
+		o.merchant = self.mock(:merchant) if o.respond_to?(:merchant=)
+		o
+	end
+
 end
 
 # Lib

@@ -1,0 +1,29 @@
+--- !ruby/object:Laundry::PaymentsGateway::Client
+record:
+  :merchant_id: '1'
+  :client_id: '1'
+  :first_name: Test
+  :last_name: Person
+  :company_name:
+  :address1:
+  :address2:
+  :city:
+  :state:
+  :postal_code:
+  :country_code:
+  :phone_number:
+  :fax_number:
+  :email_address:
+  :shipto_first_name:
+  :shipto_last_name:
+  :shipto_company_name:
+  :shipto_address1:
+  :shipto_address2:
+  :shipto_city:
+  :shipto_state:
+  :shipto_postal_code:
+  :shipto_country_code:
+  :shipto_phone_number:
+  :shipto_fax_number:
+  :consumer_id:
+  :status: Active

@@ -1,13 +1,4 @@
 require "rspec/mocks/standalone"
-require 'factory_girl'
-begin
-	factories_dir = File.expand_path File.join(__FILE__, "..", "..", "..", "spec", "factories")
-	FactoryGirl.definition_file_paths = [factories_dir]
-	FactoryGirl.find_definitions
-rescue FactoryGirl::DuplicateDefinitionError
-	puts "Factories already loaded."
-end
-include FactoryGirl::Syntax::Methods
 
 class Module
 	def subclasses
@@ -29,16 +20,17 @@ def stub_all
   end
 
   # Stub client driver
-  Laundry::PaymentsGateway::ClientDriver.any_instance.stub(:find).and_return(build(:client))
-  Laundry::PaymentsGateway::ClientDriver.any_instance.stub(:create!).and_return(build(:client).id)
-
+  Laundry::PaymentsGateway::ClientDriver.any_instance.stub(:find).and_return(Laundry.mock(:client))
+  Laundry::PaymentsGateway::ClientDriver.any_instance.stub(:create!).and_return(Laundry.mock(:client).id)
 
   # Stub account driver
-  Laundry::PaymentsGateway::AccountDriver.any_instance.stub(:find).and_return(build(:account))
-  Laundry::PaymentsGateway::AccountDriver.any_instance.stub(:create!).and_return(build(:account).id)
+  Laundry::PaymentsGateway::AccountDriver.any_instance.stub(:find).and_return(Laundry.mock(:account))
+  Laundry::PaymentsGateway::AccountDriver.any_instance.stub(:create!).and_return(Laundry.mock(:account).id)
 
   # Stub performing transactions.
-  Laundry::PaymentsGateway::Account.any_instance.stub(:perform_transaction).and_return(build(:transaction_response))
+  Laundry::PaymentsGateway::Account.any_instance.stub(:perform_transaction).and_return(Laundry.mock(:transaction_response))
+
+  # Laundry::PaymentsGateway::TransactionResponse.stub(:mock_failing).and_return(Laundry.mock(:failing_transaction_response))
 
   Laundry.stub(:stubbed?).and_return true
 end
