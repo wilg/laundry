@@ -30,8 +30,6 @@ def stub_all
   # Stub performing transactions.
   Laundry::PaymentsGateway::Account.any_instance.stub(:perform_transaction).and_return(Laundry.mock(:transaction_response))
 
-  # Laundry::PaymentsGateway::TransactionResponse.stub(:mock_failing).and_return(Laundry.mock(:failing_transaction_response))
-
   Laundry.stub(:stubbed?).and_return true
 end
 
