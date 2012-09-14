@@ -1,6 +1,7 @@
 require 'simplecov'
 require 'coveralls'
 
+#.
 SimpleCov.start 'rails'
 SimpleCov.formatter = Coveralls::SimpleCov::Formatter
 
