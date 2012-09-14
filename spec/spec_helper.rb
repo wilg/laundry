@@ -5,6 +5,10 @@ require 'coveralls'
 SimpleCov.start 'rails'
 SimpleCov.formatter = Coveralls::SimpleCov::Formatter
 
+puts "=========="
+puts ENV.to_hash.to_yaml
+puts "=========="
+
 require 'factory_girl'
 
 RSpec.configure do |config|
