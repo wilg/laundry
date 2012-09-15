@@ -1,0 +1,15 @@
+--- !ruby/object:Laundry::PaymentsGateway::Account
+record:
+  :merchant_id: '1'
+  :client_id: '1'
+  :payment_method_id: '1'
+  :acct_holder_name: John Quincy Adams
+  :cc_card_number:
+  :cc_expiration_date:
+  :cc_card_type:
+  :cc_procurement_card: false
+  :ec_account_number: XXXXXX1234
+  :ec_account_trn: '1234565678'
+  :ec_account_type: CHECKING
+  :note:
+  :is_default: false

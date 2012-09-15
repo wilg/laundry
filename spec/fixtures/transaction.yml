@@ -1,0 +1,73 @@
+--- !ruby/object:Laundry::PaymentsGateway::Transaction
+record:
+  :account_type: C
+  :acct_trn: '1234153465'
+  :amount: '25'
+  :attempt_number: '1'
+  :billto_address:
+  :billto_address2:
+  :billto_city:
+  :billto_company_name:
+  :billto_email_address:
+  :billto_first_name: John
+  :billto_last_name: Q. Public
+  :billto_phone:
+  :billto_postal_code:
+  :billto_state:
+  :card_exp_date:
+  :card_type:
+  :cardholder_name:
+  :check_number:
+  :consumer_id:
+  :consumer_order_id: transaction432
+  :convenience_fee: '0'
+  :convenience_fee_principal: '0'
+  :debit_credit: C
+  :entered_by:
+  :entry_class_code:
+  :entry_description:
+  :ip_address: 192.168.1.1
+  :item_description:
+  :line_items:
+  :merchant_data1:
+  :merchant_data2:
+  :merchant_data3:
+  :merchant_data4:
+  :merchant_data5:
+  :merchant_data6:
+  :merchant_data7:
+  :merchant_data8:
+  :merchant_data9:
+  :merchant_id: '1'
+  :origination_date: !ruby/object:DateTime 2012-08-28 17:00:00.000000000 -07:00
+  :response:
+    :auth_code: '1234235'
+    :avs_result:
+    :last4: '1234'
+    :merchant_client_id: '1'
+    :preauth_code:
+    :preauth_description:
+    :preauth_neg_report:
+    :preauth_result:
+    :response_code: A01
+    :response_description: APPROVED
+    :response_type: A
+    :status: Funded
+    :transaction_id: gewragwegew-34-fqwf4fa
+  :sales_tax_amount: '0'
+  :service_fee: '0'
+  :service_fee_principal: '0'
+  :shipto_address:
+  :shipto_address2:
+  :shipto_city:
+  :shipto_freight_amount: '0'
+  :shipto_name:
+  :shipto_postal_code:
+  :shipto_state:
+  :total_amount: '25'
+  :transaction_id: gewragwegew-34-fqwf4fa
+  :ts_created: !ruby/object:DateTime 2012-08-28 17:00:00.000000000 -07:00
+  :updated_date: !ruby/object:DateTime 2012-08-28 17:00:00.000000000 -07:00
+  :user_defined:
+  :wallet_id:
+  :@xmlns:i: http://www.w3.org/2001/XMLSchema-instance

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Laundry::PaymentsGateway::Merchant do
 
-	let(:merchant) { build :merchant }
+	let(:merchant) { Laundry.mock :merchant }
 
 	describe "#find" do
     before do

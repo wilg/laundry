@@ -1,0 +1,5 @@
+--- !ruby/object:Laundry::PaymentsGateway::Merchant
+id: '123456'
+api_login_id: abc123
+api_password: secretsauce
+transaction_password: moneymoneymoney
