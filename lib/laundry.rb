@@ -8,6 +8,7 @@ Savon.configure do |config|
   HTTPI.log = false
 end
 
+
 module Laundry
 
   @@sandboxed = true
