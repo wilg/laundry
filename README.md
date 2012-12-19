@@ -1,4 +1,4 @@
-#Laundry [![Build Status](https://secure.travis-ci.org/wilg/laundry.png?branch=master)](http://travis-ci.org/wilg/laundry)  [![Build Status](https://coveralls.herokuapp.com/repos/wilg/laundry/badge.png?branch=master)](http://travis-ci.org/supapuerco/laundry) [![Dependency Status](https://gemnasium.com/wilg/laundry.png)](https://gemnasium.com/wilg/laundry) [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/wilg/laundry)
+#Laundry [![Build Status](https://secure.travis-ci.org/wilg/laundry.png?branch=master)](http://travis-ci.org/wilg/laundry)  [![Build Status](https://coveralls.herokuapp.com/repos/wilg/laundry/badge.png?branch=master)](https://travis-ci.org/wilg/laundry/) [![Dependency Status](https://gemnasium.com/wilg/laundry.png)](https://gemnasium.com/wilg/laundry) [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/wilg/laundry)
 
 Have you ever wanted to use [ACH Direct](http://www.achdirect.com)'s [Payments Gateway](http://www.paymentsgateway.com) SOAP API? Neither did anyone. However, with this little gem you should be able to interact with it without going too terribly nuts.
 
@@ -17,7 +17,7 @@ gem 'laundry'
 There is a [bug in Savon's XML parser](https://github.com/rubiii/nori/issues/19) that can affect you if you are intending to serialize any of Laundry's objects to YAML. For the time being, adding the following line to your Gemfile can resolve this:
 
 ```ruby
-gem 'nori', git: 'git@github.com:supapuerco/nori.git' # Fixes some YAML serialization issues.
+gem 'nori', git: 'git@github.com:wilg/nori.git' # Fixes some YAML serialization issues.
 ```
 
 And then execute:
