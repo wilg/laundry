@@ -47,10 +47,14 @@ module Laundry
     # Class methods.
     def class_action_module
       @class_action_module ||= Module.new do
-
         # Returns the memoized <tt>Savon::Client</tt>.
         def client(&block)
-          @client ||= Savon::Client.new(&block)
+          opts = {
+                  # disable request logging, silences HTTPI as well
+                  log:       false,
+                  # Don't log Laundry xmls to STDOUT
+                  log_level: :error}
+          @client ||= Savon::Client.new(opts, &block)
         end
 
         # Sets the SOAP endpoint to the given +uri+.
