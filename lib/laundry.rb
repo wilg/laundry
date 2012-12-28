@@ -1,13 +1,17 @@
-require "laundry/version"
+require 'laundry/version'
 require 'savon'
 
-# Don't log Laundry xmls to STDOUT.
-Savon.configure do |config|
-  config.log = false
-  config.log_level = :error
-  HTTPI.log = false
+if Savon::VERSION =~ /^[01]\./
+  Savon.configure do |config|
+    config.log = false
+    config.log_level = :error
+    HTTPI.log = false
+  end
+else
+  # Savon v2
+  Savon.client(log_level: :error)
+  Savon.client(log: false)
 end
-
 
 module Laundry
 
