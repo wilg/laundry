@@ -3,11 +3,24 @@ module Laundry
 
     class MerchantNotSetError < StandardError; end
 
+    # ResponseModel
+    #
+    # A container model for a serialized response and a
+    # Laundry::PaymentsGateway::Merchant object.  The response is serialized
+    # using to_hash if possible, otherwise it's initialized to an empty hash
+    # and the value is stored in self.record
     class ResponseModel
 
       attr_accessor :record
       attr_accessor :merchant
 
+      # ResponseModel.from_response(response, merchant)
+      #
+      # A constructor method for building ResponseModel objects from a response
+      # and a merchant.  The response
+      #
+      # response - must implement a to_hash method
+      # merchant - A Laundry Merchant object (?)
       def self.from_response(response, merchant)
         model = self.new
         model.merchant = merchant
