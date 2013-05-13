@@ -18,14 +18,7 @@ Add this line to your application's Gemfile:
 gem 'laundry'
 ```
 
-There is a [bug in Savon's XML
-parser](https://github.com/rubiii/nori/issues/19) that can affect you if you
-are intending to serialize any of Laundry's objects to YAML. For the time
-being, adding the following line to your Gemfile can resolve this:
-
-```ruby
-gem 'nori', git: 'git@github.com:wilg/nori.git' # Fixes some YAML serialization issues.
-```
+Laundry isn't compatible with ruby 1.9.3-p194, due to a bug in that specific release. ([More info](https://github.com/savonrb/nori/pull/24))
 
 And then execute:
 
