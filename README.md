@@ -1,11 +1,4 @@
-#Laundry [![Build
-Status](https://secure.travis-ci.org/wilg/laundry.png?branch=master)](http://travis-ci.org/wilg/laundry)
-[![Build
-Status](https://coveralls.herokuapp.com/repos/wilg/laundry/badge.png?branch=master)](https://travis-ci.org/wilg/laundry/)
-[![Dependency
-Status](https://gemnasium.com/wilg/laundry.png)](https://gemnasium.com/wilg/laundry)
-[![Code
-Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/wilg/laundry)
+# Laundry [![Build Status](https://api.travis-ci.org/wilg/laundry.png?branch=master)](http://travis-ci.org/wilg/laundry) [![Coverage ](https://coveralls.herokuapp.com/repos/wilg/laundry/badge.png?branch=master)](https://travis-ci.org/wilg/laundry/) [![Code Climate](https://codeclimate.com/github/wilg/laundry.png)](https://codeclimate.com/github/wilg/laundry) [![Dependency Status](https://gemnasium.com/wilg/laundry.png)](https://gemnasium.com/wilg/laundry)
 
 Have you ever wanted to use [ACH Direct](http://www.achdirect.com)'s [Payments
 Gateway](http://www.paymentsgateway.com) SOAP API? Neither did anyone. However,
